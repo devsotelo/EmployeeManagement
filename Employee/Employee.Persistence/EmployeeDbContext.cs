@@ -25,24 +25,19 @@ namespace Employee.Persistence
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(EmployeeDbContext).Assembly);
 
-            //seed data, added through migrations
-            var readId = 1;
-            var writeId = 2;
-            var executeId = 3;
-
             modelBuilder.Entity<PermissionType>().HasData(new PermissionType
             {
-                Id = readId,
+                Id = 1,
                 Name = "READ"
             });
             modelBuilder.Entity<PermissionType>().HasData(new PermissionType
             {
-                Id = writeId,
+                Id = 2,
                 Name = "WRITE"
             });
             modelBuilder.Entity<PermissionType>().HasData(new PermissionType
             {
-                Id = executeId,
+                Id = 3,
                 Name = "EXECUTE"
             });
 
@@ -61,8 +56,8 @@ namespace Employee.Persistence
             modelBuilder.Entity<Permission>().HasData(new Permission
             {
                 Id = 1,
-                IdEmployee = 1,
-                IdPermissionType = 1
+                EmployeeId = 1,
+                PermissionTypeId = 1
             });
         }
     }

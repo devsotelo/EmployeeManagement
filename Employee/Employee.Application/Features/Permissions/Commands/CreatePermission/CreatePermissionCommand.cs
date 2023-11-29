@@ -9,8 +9,8 @@ namespace Employee.Application.Features.Permissions.Commands.CreatePermission
 {
     public class CreatePermissionCommand : IRequest<int>
     {
-        public int IdEmployee { get; set; }
+        public int EmployeeId { get; set; }
 
-        public int IdPermissionType { get; set; }
+        public int PermissionTypeId { get; set; }
     }
 }

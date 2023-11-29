@@ -17,7 +17,7 @@ namespace Employee.Persistence.Repositories
 
         public Task<bool> IsPermissionUnique(int idEmployee, int idPermissionType)
         {
-            var matches = dbContext.Permissions.Any(e => e.IdEmployee.Equals(idEmployee) && e.IdPermissionType.Equals(idPermissionType));
+            var matches = dbContext.Permissions.Any(e => e.EmployeeId.Equals(idEmployee) && e.PermissionTypeId.Equals(idPermissionType));
             return Task.FromResult(matches);
         }
     }

@@ -64,7 +64,7 @@ namespace Employee.Api
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "GloboTicket Ticket Management API",
+                    Title = "Employee Management API",
 
                 });
             });

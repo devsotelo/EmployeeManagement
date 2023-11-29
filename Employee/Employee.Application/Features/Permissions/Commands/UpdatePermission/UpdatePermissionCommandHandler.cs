@@ -60,8 +60,8 @@ namespace Employee.Application.Features.Permissions.Commands.UpdatePermission
                 await elasticService.Send(new Models.PermissionDocument
                 {
                     Id = permission.Id,
-                    IdEmployee = permission.IdEmployee,
-                    IdPermissionType = permission.IdPermissionType
+                    EmployeeId = permission.EmployeeId,
+                    PermissionTypeId = permission.PermissionTypeId
                 });
             }
             catch (Exception ex)

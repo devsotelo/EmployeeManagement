@@ -36,17 +36,17 @@ namespace Employee.Application.Features.Permissions.Commands.UpdatePermission
 
         private async Task<bool> PermissionUnique(UpdatePermissionCommand e, CancellationToken token)
         {
-            return !(await permissionRepository.IsPermissionUnique(e.IdEmployee, e.IdPermissionType));
+            return !(await permissionRepository.IsPermissionUnique(e.EmployeeId, e.PermissionTypeId));
         }
 
         private async Task<bool> EmployeeExists(UpdatePermissionCommand e, CancellationToken token)
         {
-            return (await employeeRepository.GetByIdAsync(e.IdEmployee)) != null;
+            return (await employeeRepository.GetByIdAsync(e.EmployeeId)) != null;
         }
 
         private async Task<bool> TypeExists(UpdatePermissionCommand e, CancellationToken token)
         {
-            return (await permissionTypeRepository.GetByIdAsync(e.IdPermissionType)) != null;
+            return (await permissionTypeRepository.GetByIdAsync(e.PermissionTypeId)) != null;
         }
     }
 }

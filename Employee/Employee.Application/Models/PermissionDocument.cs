@@ -10,8 +10,8 @@ namespace Employee.Application.Models
     {
         public int Id { get; set; }
 
-        public int IdEmployee { get; set; }
+        public int EmployeeId { get; set; }
 
-        public int IdPermissionType { get; set; }
+        public int PermissionTypeId { get; set; }
     }
 }

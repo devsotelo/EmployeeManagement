@@ -35,17 +35,17 @@ namespace Employee.Application.Features.Permissions.Commands.CreatePermission
 
         private async Task<bool> PermissionUnique(CreatePermissionCommand e, CancellationToken token)
         {
-            return !(await permissionRepository.IsPermissionUnique(e.IdEmployee, e.IdPermissionType));
+            return !(await permissionRepository.IsPermissionUnique(e.EmployeeId, e.PermissionTypeId));
         }
 
         private async Task<bool> EmployeeExists(CreatePermissionCommand e, CancellationToken token)
         {
-            return (await employeeRepository.GetByIdAsync(e.IdEmployee)) != null;
+            return (await employeeRepository.GetByIdAsync(e.EmployeeId)) != null;
         }
 
         private async Task<bool> TypeExists(CreatePermissionCommand e, CancellationToken token)
         {
-            return (await permissionTypeRepository.GetByIdAsync(e.IdPermissionType)) != null;
+            return (await permissionTypeRepository.GetByIdAsync(e.PermissionTypeId)) != null;
         }
     }
 }

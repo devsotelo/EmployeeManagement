@@ -16,7 +16,7 @@ namespace Employee.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<EmployeeDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("GloboTicketTicketManagementConnectionString")));
+                options.UseSqlServer(configuration.GetConnectionString("EmployeeManagementConnectionString")));
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 

@@ -5,7 +5,7 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateBootstrapLogger();
 
-Log.Information("GloboTicket API starting");
+Log.Information("Employee API starting");
 
 var builder = WebApplication.CreateBuilder(args);
 
