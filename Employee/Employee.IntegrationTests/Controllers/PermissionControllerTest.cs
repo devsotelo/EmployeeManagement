@@ -19,11 +19,11 @@ namespace Employee.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task ReturnsSuccessResult()
+        public async Task GetPermissionsTest()
         {
             var client = _factory.GetAnonymousClient();
 
-            var response = await client.GetAsync("/api/GetPermissions");
+            var response = await client.GetAsync("/GetPermissions");
 
             response.EnsureSuccessStatusCode();
 

@@ -1,4 +1,5 @@
 using Employee.Api;
+using KafkaFlow;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -21,6 +22,9 @@ app.UseSerilogRequestLogging();
 
 await app.ResetDatabaseAsync();
 
-app.Run();
+var kafkaBus = app.Services.CreateKafkaBus();
+await kafkaBus.StartAsync();
+
+await app.RunAsync();
 
 public partial class Program { }

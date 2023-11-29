@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee.Persistence.Integr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee.IntegrationTests", "Employee.IntegrationTests\Employee.IntegrationTests.csproj", "{119977F8-ECD0-4FFB-8BF2-FDB321B4826F}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{64D9ACE0-8CCE-42BB-896F-5CB5D2FCA6DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{119977F8-ECD0-4FFB-8BF2-FDB321B4826F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{119977F8-ECD0-4FFB-8BF2-FDB321B4826F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{119977F8-ECD0-4FFB-8BF2-FDB321B4826F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64D9ACE0-8CCE-42BB-896F-5CB5D2FCA6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D9ACE0-8CCE-42BB-896F-5CB5D2FCA6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D9ACE0-8CCE-42BB-896F-5CB5D2FCA6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D9ACE0-8CCE-42BB-896F-5CB5D2FCA6DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Employee.Domain.Entities;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Employee.Persistence
 {
@@ -15,6 +17,7 @@ namespace Employee.Persistence
         public EmployeeDbContext(DbContextOptions<EmployeeDbContext> options)
             : base(options)
         {
+            
         }
 
         public DbSet<Permission> Permissions { get; set; }

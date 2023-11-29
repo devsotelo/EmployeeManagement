@@ -16,8 +16,8 @@ namespace Employee.Api.Controllers
             _mediator = mediator;
         }
 
-        [Route("api/GetPermissions")]
-        [HttpGet(Name = "GetAllEvents")]
+        //[Route("api/GetPermissions")]
+        [HttpGet("GetAllEvents", Name = "GetAllEvents")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
         public async Task<ActionResult<List<PermissionVm>>> GetAllEvents()
@@ -26,20 +26,20 @@ namespace Employee.Api.Controllers
             return Ok(dtos);
         }
 
-        [Route("api/RequestPermission")]
-        [HttpPost(Name = "AddEvent")]
-        public async Task<ActionResult<Guid>> Create([FromBody] CreatePermissionCommand createEventCommand)
+        //[Route("api/RequestPermission")]
+        [HttpPost("RequestPermission", Name = "RequestPermission")]
+        public async Task<ActionResult<Guid>> RequestPermission([FromBody] CreatePermissionCommand createEventCommand)
         {
             var id = await _mediator.Send(createEventCommand);
             return Ok(id);
         }
 
-        [Route("api/ModifyPermission")]
-        [HttpPut(Name = "UpdateEvent")]
+        //[Route("api/ModifyPermission")]
+        [HttpPut("ModifyPermission", Name = "ModifyPermission")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Update([FromBody] UpdatePermissionCommand updateEventCommand)
+        public async Task<ActionResult> ModifyPermission([FromBody] UpdatePermissionCommand updateEventCommand)
         {
             await _mediator.Send(updateEventCommand);
             return NoContent();

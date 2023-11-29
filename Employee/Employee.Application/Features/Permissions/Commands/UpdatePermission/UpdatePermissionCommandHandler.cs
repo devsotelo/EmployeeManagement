@@ -75,7 +75,6 @@ namespace Employee.Application.Features.Permissions.Commands.UpdatePermission
                 {
                     Uuid = Guid.NewGuid().ToString(),
                     Name = "modify"
-
                 });
             }
             catch (Exception ex)
