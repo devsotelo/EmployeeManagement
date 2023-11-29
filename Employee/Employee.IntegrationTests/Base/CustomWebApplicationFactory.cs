@@ -1,6 +1,10 @@
-﻿using Employee.Persistence;
+﻿using System.Data.Common;
+using Employee.Application.Contracts.Infrastructure;
+using Employee.IntegrationTests.Mocks;
+using Employee.Persistence;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -14,32 +18,33 @@ namespace Employee.IntegrationTests.Base
         {
             builder.ConfigureServices(services =>
             {
+                var dbContextDescriptor = services.SingleOrDefault(
+                    d => d.ServiceType == typeof(DbContextOptions<EmployeeDbContext>));
 
-                services.AddDbContext<EmployeeDbContext>(options =>
+                services.Remove(dbContextDescriptor);
+
+                var dbConnectionDescriptor = services.SingleOrDefault(
+                    d => d.ServiceType == typeof(DbConnection));
+
+                services.Remove(dbConnectionDescriptor);
+
+                services.AddSingleton<DbConnection>(container =>
                 {
-                    options.UseInMemoryDatabase(Guid.NewGuid().ToString());
+                    var connection = new SqliteConnection("DataSource=:memory:");
+                    connection.Open();
+
+                    return connection;
                 });
 
-                var sp = services.BuildServiceProvider();
-
-                using (var scope = sp.CreateScope())
+                services.AddDbContext<EmployeeDbContext>((container, options) =>
                 {
-                    var scopedServices = scope.ServiceProvider;
-                    var context = scopedServices.GetRequiredService<EmployeeDbContext>();
-                    var logger = scopedServices.GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
+                    var connection = container.GetRequiredService<DbConnection>();
+                    options.UseSqlite(connection);
+                });
 
-                    context.Database.EnsureCreated();
-
-                    try
-                    {
-                        context.InitializeDbForTests();
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.LogError(ex, $"An error occurred seeding the database with test messages. Error: {ex.Message}");
-                    }
-                };
             });
+
+            builder.UseEnvironment("Development");
         }
 
         public HttpClient GetAnonymousClient()

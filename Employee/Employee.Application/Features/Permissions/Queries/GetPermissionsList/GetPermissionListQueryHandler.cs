@@ -31,22 +31,8 @@ namespace Employee.Application.Features.Permissions.Queries.GetPermissionsList
 
         public async Task<List<PermissionVm>> Handle(GetPermissionListQuery request, CancellationToken cancellationToken)
         {
-            var allEvents = (await permissionRepository.ListAllAsync()).OrderBy(x => x.Id);
-
-            try
-            {
-                await kafkaService.Send(new Models.OperationMessage
-                {
-                    Uuid = Guid.NewGuid().ToString(),
-                    Name = "get"
-                });
-            }
-            catch (Exception ex)
-            {
-                logger.LogError($"Kafka for get failed due to an error with the service: {ex.Message}");
-            }
-
-            return mapper.Map<List<PermissionVm>>(allEvents);
+            var allPermissions = (await permissionRepository.ListAllAsync()).OrderBy(x => x.Id);
+            return mapper.Map<List<PermissionVm>>(allPermissions);
         }
     }
 }

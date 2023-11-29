@@ -16,7 +16,6 @@ namespace Employee.Api.Controllers
             _mediator = mediator;
         }
 
-        //[Route("api/GetPermissions")]
         [HttpGet("GetAllEvents", Name = "GetAllEvents")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
@@ -26,7 +25,6 @@ namespace Employee.Api.Controllers
             return Ok(dtos);
         }
 
-        //[Route("api/RequestPermission")]
         [HttpPost("RequestPermission", Name = "RequestPermission")]
         public async Task<ActionResult<Guid>> RequestPermission([FromBody] CreatePermissionCommand createEventCommand)
         {
@@ -34,7 +32,6 @@ namespace Employee.Api.Controllers
             return Ok(id);
         }
 
-        //[Route("api/ModifyPermission")]
         [HttpPut("ModifyPermission", Name = "ModifyPermission")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
