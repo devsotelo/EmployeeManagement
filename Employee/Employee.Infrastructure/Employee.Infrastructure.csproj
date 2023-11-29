@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KafkaFlow" Version="3.0.0" />
+    <PackageReference Include="KafkaFlow.LogHandler.Console" Version="3.0.0" />
+    <PackageReference Include="KafkaFlow.Microsoft.DependencyInjection" Version="3.0.0" />
+    <PackageReference Include="KafkaFlow.Serializer.JsonCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+    <PackageReference Include="NEST" Version="7.17.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Employee.Application\Employee.Application.csproj" />
+  </ItemGroup>
+
+</Project>
